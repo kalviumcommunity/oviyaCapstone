@@ -22,10 +22,10 @@ const io = new Server(server, {
   }
 });
 
-// // Middleware
-// app.use(cors());
-// app.use(express.json());
-// app.use('/uploads', express.static('uploads'));
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/oviya-nursery', {
@@ -35,13 +35,13 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/oviya-nur
 .then(() => console.log('MongoDB connected successfully'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-// // Routes
-// app.use('/api/auth', authRoutes);
-// app.use('/api/chat', chatRoutes);
-// app.use('/api/notice', noticeRoutes);
-// app.use('/api/report', reportRoutes);
-// app.use('/api/gallery', galleryRoutes);
-// app.use('/api/contact', contactRoutes);
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/notice', noticeRoutes);
+app.use('/api/report', reportRoutes);
+app.use('/api/gallery', galleryRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Socket.IO for real-time chat
 const activeUsers = new Map();
