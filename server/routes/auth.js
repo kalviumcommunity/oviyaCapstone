@@ -91,15 +91,15 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// // Get current user
-// router.get('/me', auth, async (req, res) => {
-//   try {
-//     const user = await User.findById(req.userId).select('-password');
-//     res.json(user);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error', error: error.message });
-//   }
-// });
+// Get current user
+router.get('/me', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select('-password');
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
 
 // Logout
 router.post('/logout', auth, async (req, res) => {
